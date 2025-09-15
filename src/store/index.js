@@ -17,19 +17,6 @@ const store = createStore({
         "is_processed": false,
         "created_by": "faqyc"
       },
-      {
-          "id": 2,
-        "matiere": "Math",
-        "section_type": "SCIENCE_B",
-        "questions_file": "http://127.0.0.1:8000/media/file/cheques.pdf",
-        "answers_file": "http://127.0.0.1:8000/media/file/cheques_0BldGIr.pdf",
-        "type": "COURS",
-        "year": "2020",
-        "details": "Et harum laudantium",
-        "created_at": "2025-09-14T18:35:15.815540Z",
-        "is_processed": false,
-        "created_by": "faqyc"
-      }
     ],
     searchQuery: '',
     selectedCategory: 'all',

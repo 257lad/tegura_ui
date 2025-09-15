@@ -82,7 +82,7 @@ export default {
 
         const aiMessage = {
           id: (Date.now() + 1).toString(),
-          text: fullText,
+          text: "",
           sender: "ai",
           timestamp: new Date(),
         };

@@ -2,7 +2,7 @@ import axios from 'axios';
 import store from './store';
 
 // axios.defaults.baseURL = 'http://business.amidev.bi/api/';
-axios.defaults.baseURL = 'http://127.0.0.1:8000/api/';
+axios.defaults.baseURL = 'http://192.168.160.227:8000/api/';
 // axios.defaults.baseURL = 'http://192.168.1.98:8000/api/';
 
 axios.interceptors.request.use(
