@@ -1,23 +1,29 @@
 <template>
+  <div class="flex bg-white p-4">
+    <ArrowLeft
+      @click="$router.go(-1)"
+      class="w-8 h-8 text-white cursor-pointer self-center mr-4 bg-blue-500 p-2 rounded-full"
+    />
+    <h1 class="text-xl font-bold">{{ $route.query.nom }}</h1>
+  </div>
   <div class="min-h-screen bg-gray-100 p-4 space-y-6">
     <div class="flex justify-between items-center">
-      <h1 class="text-2xl font-bold">{{ $route.query.nom }}</h1>
       <div class="flex gap-2">
-        <!-- Toggle buttons -->
         <button
           @click="current = 'questionnaire'"
           :class="buttonClass(current === 'questionnaire')"
         >
-          Questionnaire
+          <!-- Questionnaire -->
+          {{ t('question') }}
         </button>
         <button
           @click="current = 'correction'"
           :class="buttonClass(current === 'correction')"
         >
-          Correction
+          <!-- Correction -->
+            {{ t('answer') }}
         </button>
 
-        <!-- Download button -->
         <button
           @click="downloadPdf"
           :class="downloadClass"
@@ -27,7 +33,6 @@
       </div>
     </div>
 
-    <!-- PDF Viewer -->
     <div class="bg-white rounded-xl shadow p-4 space-y-2">
       <VuePdf
         :src="currentPdf"
@@ -38,17 +43,21 @@
 </template>
 
 <script>
-import { ArrowDown } from "lucide-vue-next";
+import { ArrowDown, ArrowLeft } from "lucide-vue-next";
+import { t } from "../i18n/translations";
+import { mapState, mapGetters, mapActions } from 'vuex'
 
 export default {
   name: "QuestionnairePage",
-  components: { ArrowDown },
+  components: { ArrowDown, ArrowLeft },
   data() {
     return {
       current: "questionnaire", // default view
     };
   },
   computed: {
+    ...mapState(['currentLanguage']),
+    ...mapGetters(['filteredExams']),
     currentPdf() {
       return this.current === "questionnaire"
         ? this.$route.query.test
@@ -56,14 +65,18 @@ export default {
     },
     downloadClass() {
       return this.current === "questionnaire"
-        ? "px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition flex items-center justify-center"
-        : "px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition flex items-center justify-center";
+        ? "px-2 py-1 bg-green-600 text-white rounded-lg hover:bg-green-700 transition flex items-center justify-center"
+        : "px-2 py-1 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition flex items-center justify-center";
     },
   },
   methods: {
+    ...mapActions(['initializeLanguage']),
+    t(key) {
+      return t(key, this.currentLanguage)
+    },
     buttonClass(isActive) {
       return [
-        "px-4 py-2 rounded-lg font-medium transition",
+        "px-2.5 py-1.5 rounded-lg transition text-sm",
         isActive
           ? "bg-blue-600 text-white"
           : "bg-gray-200 text-gray-800 hover:bg-gray-300",

@@ -10,5 +10,11 @@ export default defineConfig({
     alias: {
       vue: "vue/dist/vue.esm-bundler.js"
     }
-  }
+  },
+  server: {
+    host: true,          // allows network access
+    port: 5173,          // default port
+    strictPort: false,
+    https: false,        // important: disable HTTPS
+  },
 })

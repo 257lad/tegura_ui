@@ -44,6 +44,9 @@ export const translations = {
     cancel: 'Annuler',
     confirm: 'Confirmer',
 
+    question: 'Question',
+    answer: 'Réponse',
+
     ask: 'Posez vos questions et obtenez de l\'aide instantanée',
   },
   
@@ -92,7 +95,10 @@ export const translations = {
     retry: 'Ongera ugerageze',
     cancel: 'Guhagarika',
     confirm: 'Kwemeza',
-    ask: 'Baza ikibazo cawe, uronkereho inyishu'
+    ask: 'Baza ikibazo cawe, uronkereho inyishu',
+
+    question: 'Ikibazo',
+    answer: 'Inyishu',
   }
 }
 
