@@ -33,7 +33,7 @@
       </div>
     </div>
 
-    <div class="bg-white rounded-xl shadow p-4 space-y-2">
+    <div class="bg-white">
       <VuePdf
         :src="currentPdf"
         class="w-full h-[75vh] overflow-scroll rounded-lg border"
